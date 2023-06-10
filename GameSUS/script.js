@@ -69,6 +69,22 @@ function process(){
 	savestring += this.value.toString();
 	this.style.backgroundColor = "lightblue";
 	ar.push([this.cor[0],this.cor[1]]);
+	if(ar.length == 2){
+		for(let i = 0 ; i <= 7 ; i++){
+			if(ar[0][0] + directVal[i][0] == ar[1][0] && ar[0][1] + directVal[i][1] == ar[1][1]){
+				curdir = i;
+				break;
+			}
+		}
+		
+		prepx = ar[0][0] - ar[1][0];
+		prepy = ar[0][1]- ar[1][1];
+		console.log(prepx);
+		console.log(prepy);
+		if(curdir >= 0 && (this.cor[0] + directVal[curdir][0] < 0 || this.cor[0] + directVal[curdir][0] > 9 || this.cor[1] + directVal[curdir][1] < 0 || this.cor[1] + directVal[curdir][1] > 9)){
+			ok = 0;
+		}
+	}
 	if(ar.length > 2){
 		var tempx = ar[ar.length-2][0] - ar[ar.length-1][0];
 		var tempy = ar[ar.length-2][1] - ar[ar.length-1][1];
@@ -101,21 +117,20 @@ function process(){
 		
 		return;
 	}
-	if(ar.length == 2){
-		for(let i = 0 ; i <= 7 ; i++){
-			if(ar[0][0] + directVal[i][0] == ar[1][0] && ar[0][1] + directVal[i][1] == ar[1][1]){
-				curdir = i;
-				break;
-			}
-		}
-		
-		prepx = ar[0][0] - ar[1][0];
-		prepy = ar[0][1]- ar[1][1];
-		console.log(prepx);
-		console.log(prepy);
-	}
 	if(curdir >= 0 && (this.cor[0] + directVal[curdir][0] < 0 || this.cor[0] + directVal[curdir][0] > 9 || this.cor[1] + directVal[curdir][1] < 0 || this.cor[1] + directVal[curdir][1] > 9)){
 		ok = 0;
+	}
+	if(!ok){
+		window.alert("you fool!");
+		for(let i = 0 ; i < ar.length;i++){
+			var temp = document.querySelector("#grid" + (ar[i][0]*10 + ar[i][1]).toString());
+			if(!temp.used) temp.style.backgroundColor = "white";
+			else temp.style.backgroundColor = "lightgreen";
+			
+		}
+		ok = 1;
+		reset();
+		return;
 	}
 }
 function check(){

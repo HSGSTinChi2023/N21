@@ -80,6 +80,9 @@ function process(){
 		
 		prepx = ar[0][0] - ar[1][0];
 		prepy = ar[0][1]- ar[1][1];
+		if( Math.abs(prepx) > 1 || Math.abs(prepy) > 1){
+			ok = 0;
+		}	
 		console.log(prepx);
 		console.log(prepy);
 		if(curdir >= 0 && (this.cor[0] + directVal[curdir][0] < 0 || this.cor[0] + directVal[curdir][0] > 9 || this.cor[1] + directVal[curdir][1] < 0 || this.cor[1] + directVal[curdir][1] > 9)){
@@ -89,11 +92,14 @@ function process(){
 	if(ar.length > 2){
 		var tempx = ar[ar.length-2][0] - ar[ar.length-1][0];
 		var tempy = ar[ar.length-2][1] - ar[ar.length-1][1];
-		console.log(tempx);
-		console.log(tempy);
+		if( Math.abs(tempx) > 1 || Math.abs(tempy) > 1){
+			ok = 0;
+		}	
 		if(prepx*tempy != prepy*tempx){
 			ok = 0;
 		}
+		console.log(tempx);
+		console.log(tempy);
 	}
 	if(!ok){
 		window.alert("you fool!");

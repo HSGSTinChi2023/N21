@@ -1,0 +1,42 @@
+*{
+	background-color:  gray;	
+	/* text-align: center; */
+}
+#grid{
+	text-align : center;
+	display : inline-grid;
+	grid-template-columns: repeat(10,40px);
+	grid-template-rows: repeat(10,40px);
+	background-color: black;
+	color : black;
+	font-size: 30px;
+	border : 5px solid black;
+	position : flex;
+	margin-left : 35%;
+	background-color: white;
+}
+#left-part{
+	margin-left: 20%;
+	text-align: left;
+	position : justify;
+	float : left;
+	width : 40%;
+}
+#right-part{
+	text-align : left;
+	position: justify;
+	float :right;
+	width : 40%;
+}
+.grid-item{
+	background-color : white;
+	border-radius:50%;
+}
+#header{
+	text-align : center;
+}
+
+#time{
+	font-size : 60px;
+	text-align : center;
+}

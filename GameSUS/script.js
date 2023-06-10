@@ -63,6 +63,7 @@ function reset(){
 	savestring= "";
 	ar = [];
 	curdir = -1;
+	ok = 1;
 
 }
 function process(){

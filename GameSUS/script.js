@@ -130,7 +130,7 @@ function process(){
 			temp.style.backgroundColor = "lightgreen";
 			temp.used = 1;
 		}
-        for(var i = 0; i < validString.length; i += 2) {
+        for(var i = 0; i < validString.length; i++) {
 			if(validString[i] == savestring) {
 				var pos = "q" + (i + 1).toString();
 				document.getElementById(pos).style.color = "lightgreen";

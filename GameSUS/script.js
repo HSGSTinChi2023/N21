@@ -1,5 +1,5 @@
 const numberArray = [8,3,4,6,0,5,0,1,2,2,7,4,7,8,7,5,7,0,7,7,6,3,0,8,7,7,1,2,5,3,5,4,7,0,7,7,7,2,7,4,4,4,4,6,4,4,6,9,2,3,3,5,7,4,7,6,1,9,7,1,2,4,7,5,7,7,2,7,7,0,1,4,4,5,4,4,7,7,1,3,1,4,6,5,7,7,4,7,2,0,7,1,0,4,6,9,4,6,4,6];
-const validString = ["62726400","00462726","16475625","52657461","447216","612744","34310306","60301343","34310306","876543211","112345678","122150","051221","6446444","4446446","88064555","55546088","64649640","04694646","2540750","0570452","7799220","0229977","22105064","46050122","343445444","444544343","17744544","44544771"];
+const validString = ["62726400","00462726","16475625","52657461","447216","612744","34310306","60301343","876543211","112345678","122150","051221","6446444","4446446","88064555","55546088","64649640","04694646","2540750","0570452","7799220","0229977","22105064","46050122","343445444","444544343","17744544","44544771"];
 var savestring ="";
 let ar =[];
 let direct = [0,1,2,3,4,5,6,7];
@@ -70,6 +70,16 @@ function process(){
 	savestring += this.value.toString();
 	this.style.backgroundColor = "lightblue";
 	ar.push([this.cor[0],this.cor[1]]);
+    if(ar.length >= 2) {
+		if(ar[ar.length - 2][0] == ar[ar.length - 1][0] && ar[ar.length - 2][1] == ar[ar.length - 1][1]) {
+			ar.pop();
+			var alt_string = "";
+			for(var i = 0; i < savestring.length - 1; i++) {
+				alt_string += savestring[i];
+			}
+			savestring = alt_string;
+		}
+	}
 	if(ar.length == 2){
 		for(let i = 0 ; i <= 7 ; i++){
 			if(ar[0][0] + directVal[i][0] == ar[1][0] && ar[0][1] + directVal[i][1] == ar[1][1]){
@@ -120,6 +130,21 @@ function process(){
 			temp.style.backgroundColor = "lightgreen";
 			temp.used = 1;
 		}
+        for(var i = 0; i < validString.length; i += 2) {
+			if(validString[i] == savestring) {
+				var pos = "q" + (i/2 + 1).toString();
+				document.getElementById(pos).style.color = "lightgreen";
+			}
+		}
+        for(var i = 0; i < 14; i++) {
+            var id = "q" + (i + 1).toString();
+            if(document.getElementById(id).style.color == "green") cnt++;
+        }
+        if(cnt == 13) {
+            window.alert("YOU WON!!!");
+            reset();
+            start();
+        }
 		reset();
 		
 		return;
@@ -143,12 +168,7 @@ function process(){
 function check(){
 	for(let i = 0 ; i < validString.length;i++){
 		if(validString[i] == savestring){
-			cnt++;
 			return true;
-		}
-		if(cnt == 13){
-			window.alert("you won!!");
-			reset();
 		}
 	}
 	return false;

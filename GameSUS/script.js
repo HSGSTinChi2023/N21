@@ -136,9 +136,10 @@ function process(){
 				document.getElementById(pos).style.color = "lightgreen";
 			}
 		}
+        cnt = 0;
         for(var i = 0; i < 14; i++) {
             var id = "q" + (i + 1).toString();
-            if(document.getElementById(id).style.color == "green") cnt++;
+            if(document.getElementById(id).style.color == "lightgreen") cnt++;
         }
         if(cnt == 13) {
             window.alert("YOU WON!!!");

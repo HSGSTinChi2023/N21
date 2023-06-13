@@ -27,6 +27,7 @@ function Ti(){
 			t1 = 3;
 			t2 = 15;
 			temp.style.color = "black";
+			reset();
 			start();
 		}
 		else t1--;
@@ -48,8 +49,11 @@ function init(){
 			cell.used = 0;
 			cell.addEventListener("click", process);
 			document.querySelector("#grid").appendChild(cell);		
-
 		}
+	}
+	for(var i = 0; i < validString.length; i++) {
+		var pos = "q" + (i + 1).toString();
+		document.getElementById(pos).style.color = "black";
 	}
 }
 function start(){
@@ -133,6 +137,7 @@ function process(){
         for(var i = 0; i < validString.length; i++) {
 			if(validString[i] == savestring) {
 				var pos = "q" + (i + 1).toString();
+                console.log(pos);
 				document.getElementById(pos).style.color = "lightgreen";
 			}
 		}

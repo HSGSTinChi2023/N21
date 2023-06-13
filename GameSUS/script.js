@@ -55,6 +55,13 @@ function init(){
 		var pos = "q" + (i + 1).toString();
 		document.getElementById(pos).style.color = "black";
 	}
+	for( let i = 0 ; i <= 9 ;i++){
+		for( let j = 0 ; j <= 9 ;j++){
+			document.querySelector("#grid" + (i*10+j).toString()).style.backgroundColor = "white";
+			document.querySelector("#grid" + (i*10+j).toString()).style.backgroundColor.used = 0;
+			
+		}
+	}
 }
 function start(){
 	init();
